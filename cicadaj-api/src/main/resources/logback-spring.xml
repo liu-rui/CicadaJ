@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <contextName>${HOSTNAME}</contextName>
+    <property name="LOG_PATH" value="${user.dir}/logs/"/>
+    <property name="encoding" value="UTF-8"/>
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name" defaultValue=".app"/>
+    <springProperty scope="context" name="dingDingUrl" source="daling.log.dingding.url"
+                    defaultValue="https://oapi.dingtalk.com/robot/send?access_token=d449672a4454a8dc7bfc100a18db2865a2f9f1157b637581b65ae006b6b81d8c"/>
+    <springProperty scope="context" name="dingDingSecret" source="daling.log.dingding.secret"
+                    defaultValue=""/>
+    <springProperty scope="context" name="dingDingLogo" source="daling.log.dingding.logo"
+                    defaultValue="https://github.com/liu-rui/liu-rui.github.io/blob/master/2019/07/01/spring%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/error.jpg?raw=true"/>
+    <springProperty scope="context" name="logDevLevel" source="daling.log.dev.level" defaultValue="INFO"/>
+    <springProperty scope="context" name="logBetaLevel" source="daling.log.beta.level" defaultValue="INFO"/>
+    <springProperty scope="context" name="logProdLevel" source="daling.log.prod.level" defaultValue="INFO"/>
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex"
+                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+    <property name="CONSOLE_LOG_PATTERN"
+              value="${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>${encoding}</charset>
+        </encoder>
+    </appender>
+    <appender name="file_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}_log_error_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger Line:%-3L - %msg%n</pattern>
+            <charset>${encoding}</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>error</level>
+        </filter>
+    </appender>
+
+    <appender name="file_warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}_log_warn_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger Line:%-3L - %msg%n</pattern>
+            <charset>${encoding}</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>warn</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="file_info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}_log_info_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger Line:%-3L - %msg%n</pattern>
+            <charset>${encoding}</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="async_file_error" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="file_error"/>
+    </appender>
+    <appender name="async_file_warn" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="file_warn"/>
+    </appender>
+    <appender name="async_file_info" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="file_info"/>
+    </appender>
+
+
+    <appender name="dingDing" class="com.daling.framework.log.logback.DingDingAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="com.apache.ibatis" level="TRACE"/>
+    <logger name="java.sql.Connection" level="DEBUG"/>
+    <logger name="java.sql.Statement" level="DEBUG"/>
+    <logger name="java.sql.PreparedStatement" level="DEBUG"/>
+
+    <springProfile
+            name="default,dev,betadeva,betadevb,betadevc,betadevd,betadeve,betadevf,betadevg,betadevh,betadevi,betadevj,betadevk,betadevl,betadevm,betadevn,betadevo,betadevp,betadevq,betadevr,betadevs,betadevt,betadevu,betadevv,betadevw,betadevx,betadevy,betadevz">
+        <root level="${logDevLevel}">
+            <appender-ref ref="async_file_error"/>
+            <appender-ref ref="async_file_warn"/>
+            <appender-ref ref="async_file_info"/>
+            <appender-ref ref="stdout"/>
+        </root>
+    </springProfile>
+
+    <springProfile
+            name="betaa,betab,betac,betad,betae,betaf,betag,betah,betai,betaj,betak,betal,betam,betan,betao,betap,betaq,betar,betas,betat,betau,betav,betaw,betax,betay,betaz">
+        <root level="${logBetaLevel}">
+            <appender-ref ref="async_file_error"/>
+            <appender-ref ref="async_file_warn"/>
+            <appender-ref ref="async_file_info"/>
+            <appender-ref ref="stdout"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <root level="${logProdLevel}">
+            <appender-ref ref="async_file_error"/>
+            <appender-ref ref="async_file_warn"/>
+            <appender-ref ref="async_file_info"/>
+            <appender-ref ref="dingDing"/>
+        </root>
+    </springProfile>
+</configuration>
