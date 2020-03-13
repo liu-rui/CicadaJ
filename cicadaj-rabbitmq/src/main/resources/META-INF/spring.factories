@@ -1,4 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.liurui.rabbitmq.web.WebApiAutoConfiguration
+  com.liurui.rabbitmq.MqAutoConfiguration
 org.springframework.boot.env.EnvironmentPostProcessor=\
-  com.liurui.rabbitmq.web.ProdConfigProtectEnvironmentPostProcessor
+  com.liurui.rabbitmq.MqEnvironmentPostProcessor

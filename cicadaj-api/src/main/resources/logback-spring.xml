@@ -86,7 +86,7 @@
     </appender>
 
 
-    <appender name="dingDing" class="com.liurui.log.logback.DingDingAppender">
+    <appender name="dingDing" class="com.liurui.rabbitmq.log.logback.DingDingAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>

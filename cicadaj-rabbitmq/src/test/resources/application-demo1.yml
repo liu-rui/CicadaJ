@@ -1,0 +1,37 @@
+cicadaj:
+  rabbitmq:
+    delay:
+      items:
+        a:
+          host: s-rabbitmq1.dev.bj4.daling.com    #主机名
+          port: 5672                            #端口
+          username: daling                         #用户名
+          password: daling                          #密码
+          virtual-host: /erp_betaa                 #虚拟目录
+          queue-name-prefix: dal_test2_               #队列名前缀
+          max-concurrent-consumers: 2                #最大并发消费数
+          concurrent-consumers: 2                   #最小并发消费数
+          prefetch-count: 1                         #预读取数量
+          errorLogLevelWhenRetryFailed: false       #在重试期间返回失败时，日志级别是否标记为Error
+          retry:
+            enabled: true   #是否开启重试次数.默认为开启；当为关闭时，消息执行失败会一直在队列中，一直处于消费状态。
+            durations: # 重试间隔列表，根据业务场景自定义；默认是三次，分别是5s,10s,20s
+              - 1m
+            failedSavePath: delay_message_retry_failed.txt  #超过重试次数时写入文件的保存路径
+        b:
+          host: s-rabbitmq1.qa.bj4.daling.com    #主机名
+          port: 5672                            #端口
+          username: daling                         #用户名
+          password: daling                          #密码
+          virtual-host: /erp_betaa                 #虚拟目录
+          queue-name-prefix: dal_b1_               #队列名前缀
+          max-concurrent-consumers: 2                #最大并发消费数
+          concurrent-consumers: 2                   #最小并发消费数
+          errorLogLevelWhenRetryFailed: false       #在重试期间返回失败时，日志级别是否标记为Error
+          retry:
+            enabled: true   #是否开启重试次数.默认为开启；当为关闭时，消息执行失败会一直在队列中，一直处于消费状态。
+            durations: # 重试间隔列表，根据业务场景自定义；默认是三次，分别是5s,10s,20s
+              - 5s
+              - 10s
+              - 15s
+            failedSavePath: delay_message_retry_failed_b.txt  #超过重试次数时写入文件的保存路径

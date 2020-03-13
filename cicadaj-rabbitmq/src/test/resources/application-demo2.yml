@@ -1,0 +1,31 @@
+cicadaj:
+  rabbitmq:
+    message:
+      items:
+        a:
+          host: s-rabbitmq1.qa.bj4.daling.com    #主机名
+          port: 5672                            #端口
+          username: daling                         #用户名
+          password: daling                          #密码
+          virtual-host: /erp_deva                 #虚拟目录
+          max-concurrent-consumers: 2                #最大并发消费数
+          concurrent-consumers: 2                   #最小并发消费数
+          exchange: liurui_1_exchange                          #交换机
+          queue: liurui_1_queue                           #队列
+          durable: true                              #是否持久化
+          failed-save-path: a.txt   #执行失败保存的路径
+        b:
+          host: s-rabbitmq1.qa.bj4.daling.com    #主机名
+          port: 5672                            #端口
+          username: daling                         #用户名
+          password: daling                          #密码
+          virtual-host: /erp_devb                 #虚拟目录
+          max-concurrent-consumers: 2                #最大并发消费数
+          concurrent-consumers: 2                   #最小并发消费数
+          exchange: liurui_2_exchange                      #交换机
+          routingKey: aa                                 #路由key
+          queue: liurui_2_queue                             #队列
+          durable: true                              #是否持久化
+          prefetchCount: 1                           #预读取数量,执行的任务比较耗时时建议调低
+          manualAck: false                           #手动ack,默认是true;关闭ack性能能达到几万/s;如果开启的话，性能也就几百/s
+          failed-save-path: b.txt   #执行失败保存的路径
