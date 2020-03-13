@@ -1,37 +1,37 @@
 {
   "properties": [
     {
-      "name": "daling.api.log.enabled",
+      "name": "cicadaj.api.log.enabled",
       "description": "是否开启方法日志功能",
       "defaultValue": true
     },
     {
-      "name": "daling.log.dingding.url",
+      "name": "cicadaj.log.dingding.url",
       "description": "钉钉机器人地址",
       "defaultValue": "https://oapi.dingtalk.com/robot/send?access_token=d449672a4454a8dc7bfc100a18db2865a2f9f1157b637581b65ae006b6b81d8c"
     },
     {
-      "name": "daling.log.dingding.secret",
+      "name": "cicadaj.log.dingding.secret",
       "description": "钉钉机器人密钥",
       "defaultValue": ""
     },
     {
-      "name": "daling.log.dingding.logo",
+      "name": "cicadaj.log.dingding.logo",
       "description": "钉钉机器人发送消息中的图片地址",
       "defaultValue": "https://github.com/liu-rui/liu-rui.github.io/blob/master/2019/07/01/spring%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/error.jpg?raw=true"
     },
     {
-      "name": "daling.log.dev.level",
+      "name": "cicadaj.log.dev.level",
       "description": "开发环境日志级别",
       "defaultValue": "INFO"
     },
     {
-      "name": "daling.log.beta.level",
+      "name": "cicadaj.log.beta.level",
       "description": "测试环境日志级别",
       "defaultValue": "INFO"
     },
     {
-      "name": "daling.log.prod.level",
+      "name": "cicadaj.log.prod.level",
       "description": "生产环境日志级别",
       "defaultValue": "INFO"
     }

@@ -3,6 +3,8 @@ package com.liurui;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -17,6 +19,8 @@ import static com.liurui.ReturnDataCodeEnum.SUCCESS;
  * @since 0.1
  */
 @ApiModel("返回值")
+@Getter
+@ToString
 public class ReturnData<T> implements Serializable {
     private static final long serialVersionUID = -5163980836046019923L;
 
@@ -69,45 +73,9 @@ public class ReturnData<T> implements Serializable {
         this.data = data;
     }
 
-    /**
-     * 获取状态码
-     *
-     * @return 状态码
-     */
-    public int getCode() {
-        return code;
-    }
-
-    /**
-     * 获取消息
-     *
-     * @return 消息
-     */
-    public String getMessage() {
-        return message;
-    }
-
-    /**
-     * 获取数据
-     *
-     * @return 数据
-     */
-    public T getData() {
-        return data;
-    }
-
 
     public void setElapsed(long elapsed) {
         this.elapsed = elapsed;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-
-    public long getElapsed() {
-        return elapsed;
     }
 
     /**
@@ -197,17 +165,6 @@ public class ReturnData<T> implements Serializable {
         if (returnData == null) {
             throw new IllegalArgumentException();
         }
-        return error(returnData.getCode(), returnData.getMessage());
-    }
-
-    @Override
-    public String toString() {
-        return "ReturnData{" +
-                "code=" + code +
-                ", message='" + message + '\'' +
-                ", data=" + data +
-                ", version='" + version + '\'' +
-                ", elapsed=" + elapsed +
-                '}';
+        return error(returnData.code, returnData.message);
     }
 }

@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.liurui.web.WebApiAutoConfiguration
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.liurui.web.ProdConfigProtectEnvironmentPostProcessor

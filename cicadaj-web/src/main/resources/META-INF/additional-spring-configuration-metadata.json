@@ -1,0 +1,24 @@
+{
+  "properties": [
+    {
+      "name": "cicadaj.web.cors",
+      "description": "跨域访问功能是否生效",
+      "defaultValue": false
+    },
+    {
+      "name": "cicadaj.web.swagger.enabled",
+      "description": "swagger文档功能是否生效",
+      "defaultValue": true
+    },
+    {
+      "name": "cicadaj.web.log.enabled",
+      "description": "Rest接口是否启用日志",
+      "defaultValue": true
+    },
+    {
+      "name": "cicadaj.web.prodConfigProtected",
+      "description": "是否开启生产环境配置保护",
+      "defaultValue": true
+    }
+  ]
+}

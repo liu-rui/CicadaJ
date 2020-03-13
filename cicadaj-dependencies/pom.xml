@@ -30,6 +30,8 @@
         <fastjson.version>1.2.58</fastjson.version>
 
         <swagger-annotations.version>1.5.20</swagger-annotations.version>
+        <swagger.version>2.9.2</swagger.version>
+        <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
         <feign-form.version>3.3.0</feign-form.version>
     </properties>
     <dependencyManagement>
@@ -91,6 +93,37 @@
                 <version>${feign-form.version}</version>
             </dependency>
             <!--end api-->
+
+            <!--begin web-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>guava</artifactId>
+                        <groupId>com.google.guava</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>guava</artifactId>
+                        <groupId>com.google.guava</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger-bootstrap-ui.version}</version>
+            </dependency>
+            <!--end web-->
+
             <dependency>
                 <groupId>com.liurui</groupId>
                 <artifactId>cicadaj-common</artifactId>
@@ -106,15 +139,11 @@
                 <artifactId>cicadaj-web</artifactId>
                 <version>${revision}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
     <build>
-        <finalName>${project.name}</finalName>
         <plugins>
-            <!--<plugin>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>

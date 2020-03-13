@@ -2,6 +2,8 @@ package com.liurui;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
  * @since 0.1
  */
 @ApiModel("分页")
+@Getter
+@ToString
 public class Pagination<T> implements Serializable {
 
     private static final long serialVersionUID = -5163980836046020921L;
@@ -91,62 +95,5 @@ public class Pagination<T> implements Serializable {
         this.totalItems = totalItems;
         this.totalPages = totalPages;
         this.items = items;
-    }
-
-    /**
-     * 获取页索引
-     *
-     * @return 页索引
-     */
-    public int getPageIndex() {
-        return pageIndex;
-    }
-
-    /**
-     * 获取页大小
-     *
-     * @return 页大小
-     */
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    /**
-     * 获取总个数
-     *
-     * @return 总个数
-     */
-    public long getTotalItems() {
-        return totalItems;
-    }
-
-    /**
-     * 获取总页数
-     *
-     * @return 总页数
-     */
-    public int getTotalPages() {
-        return totalPages;
-    }
-
-    /**
-     * 获取元素列表
-     *
-     * @return 元素列表
-     */
-    public List<T> getItems() {
-        return items;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Pagination{" +
-                "pageIndex=" + pageIndex +
-                ", pageSize=" + pageSize +
-                ", totalItems=" + totalItems +
-                ", totalPages=" + totalPages +
-                ", items=" + items +
-                '}';
     }
 }
