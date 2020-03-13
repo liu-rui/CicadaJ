@@ -14,6 +14,8 @@
         <module>cicadaj-common</module>
         <module>cicadaj-api</module>
         <module>cicadaj-web</module>
+        <module>cicadaj-rabbitmq</module>
+        <module>cicadaj-mybatis</module>
     </modules>
     <groupId>com.liurui</groupId>
     <artifactId>cicadaj</artifactId>

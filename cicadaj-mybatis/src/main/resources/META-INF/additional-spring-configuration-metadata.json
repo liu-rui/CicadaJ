@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "cicadaj.mybatis.maxPageSize",
+      "description": "分页时，最大的页大小，默认为500,-1为不限制",
+      "defaultValue": 500
+    },
+    {
+      "name": "cicadaj.mybatis.multi-data-source.enabled",
+      "description": "是否启动多数据源",
+      "defaultValue": false
+    },
+    {
+      "name": "cicadaj.mybatis.sql.enabled",
+      "description": "是否打印执行的sql语句",
+      "defaultValue": false
+    }
+  ]
+}

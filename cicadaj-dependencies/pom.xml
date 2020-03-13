@@ -33,6 +33,12 @@
         <swagger.version>2.9.2</swagger.version>
         <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
         <feign-form.version>3.3.0</feign-form.version>
+
+        <mybatis-typehandlers-jsr310.version>1.0.1</mybatis-typehandlers-jsr310.version>
+        <jackson-datatype-jsr310.version>2.9.2</jackson-datatype-jsr310.version>
+        <mybatis-plus-boot-starter.version>3.1.2</mybatis-plus-boot-starter.version>
+        <alibaba.druid.version>1.1.10</alibaba.druid.version>
+        <sharding-jdbc-spring-boot-starter.version>3.1.0</sharding-jdbc-spring-boot-starter.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -124,6 +130,47 @@
             </dependency>
             <!--end web-->
 
+            <!--begin mybatis-->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-typehandlers-jsr310</artifactId>
+                <version>${mybatis-typehandlers-jsr310.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson-datatype-jsr310.version}</version>
+            </dependency>
+            <!--mybatis 代码生成遇到的包   begin-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <!--mybatis 代码生成遇到的包   end-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${alibaba.druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>${sharding-jdbc-spring-boot-starter.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--end mybatis-->
+
             <dependency>
                 <groupId>com.liurui</groupId>
                 <artifactId>cicadaj-common</artifactId>
@@ -142,6 +189,11 @@
             <dependency>
                 <groupId>com.liurui</groupId>
                 <artifactId>cicadaj-rabbitmq</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.liurui</groupId>
+                <artifactId>cicadaj-mybatis</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>
