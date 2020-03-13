@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.liurui.redis.demo7.CacheAutoConfiguration

@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date: 19-06-24 下午19:21
  * @description: 日志配置类
  */
-@ConfigurationProperties("daling.log")
+@ConfigurationProperties("cicadaj.log")
 @Data
 public class LogProperties {
     /**

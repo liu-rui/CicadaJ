@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date : 2018/11/9 11:49
  * @description : swagger配置属性
  */
-@ConfigurationProperties("daling.webapi.swagger")
+@ConfigurationProperties("cicadaj.web.swagger")
 @Data
 public class SwaggerProperies {
 

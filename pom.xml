@@ -16,6 +16,7 @@
         <module>cicadaj-web</module>
         <module>cicadaj-rabbitmq</module>
         <module>cicadaj-mybatis</module>
+        <module>cicadaj-redis</module>
     </modules>
     <groupId>com.liurui</groupId>
     <artifactId>cicadaj</artifactId>

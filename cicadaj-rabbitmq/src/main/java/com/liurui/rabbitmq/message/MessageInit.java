@@ -68,7 +68,7 @@ public class MessageInit {
 
         if (applicationContext.containsBean(messageConsumerName)) {
             if (StringUtils.isBlank(properties.getQueue())) {
-                throw new IllegalArgumentException(String.format("消息队列的【队列名】不能为空，请配置daling.message.%s.queue", key));
+                throw new IllegalArgumentException(String.format("消息队列的【队列名】不能为空，请配置cicadaj.rabbitmq.message.%s.queue", key));
             }
             final Queue queue = createQueue(properties, admin, exchange);
 

@@ -39,6 +39,11 @@
         <mybatis-plus-boot-starter.version>3.1.2</mybatis-plus-boot-starter.version>
         <alibaba.druid.version>1.1.10</alibaba.druid.version>
         <sharding-jdbc-spring-boot-starter.version>3.1.0</sharding-jdbc-spring-boot-starter.version>
+
+        <jmh-generator-annprocess.version>1.21</jmh-generator-annprocess.version>
+        <javassist.version>3.25.0-GA</javassist.version>
+        <redisson.version>3.11.1</redisson.version>
+        <jetcache-starter-redis-lettuce.version>2.5.13</jetcache-starter-redis-lettuce.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -171,6 +176,47 @@
             </dependency>
             <!--end mybatis-->
 
+            <!--begin redis-->
+            <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-annprocess -->
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-generator-annprocess</artifactId>
+                <version>${jmh-generator-annprocess.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>${javassist.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>javassist</artifactId>
+                        <groupId>org.javassist</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alicp.jetcache/jetcache-starter-redis-lettuce -->
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-starter-redis-lettuce</artifactId>
+                <version>${jetcache-starter-redis-lettuce.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>fastjson</artifactId>
+                        <groupId>com.alibaba</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>objenesis</artifactId>
+                        <groupId>org.objenesis</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--end redis-->
+
             <dependency>
                 <groupId>com.liurui</groupId>
                 <artifactId>cicadaj-common</artifactId>
@@ -194,6 +240,11 @@
             <dependency>
                 <groupId>com.liurui</groupId>
                 <artifactId>cicadaj-mybatis</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.liurui</groupId>
+                <artifactId>cicadaj-redis</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>
